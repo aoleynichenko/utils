@@ -5,7 +5,6 @@ implicit none
 contains
 
 
-
 function evaluate_contracted_gto(L, nprim, alpha, coeffs, r) result(res)
 
     implicit none

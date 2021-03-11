@@ -24,7 +24,7 @@
 !       0.001216666666666667       0.000295599517296362
 ! Here: S orbital, 1 contracted GTO, 30 pairs 'exp - coef' total
 !
-! author: Alexander Oleynichenko, 4 Aug 2016
+! author: Alexander Oleynichenko, 11 Mar 2021
 !         alexvoleynichenko@gmail.com
 !
 
@@ -79,9 +79,11 @@ program cgto2radial
     print *, 'Number of primitives = ', num_prim
     print *, 'Number of functions  = ', num_funs
     
+    ! rR(r) on the grid will be written to the 'R.dat' file
     call calculate_radial(L, num_prim, num_funs, alpha, coeffs, 0.0d0, 5.0d0, 0.001d0)
     
-    print '(a5,a12,a10)', 'n', '|R(r)|', '<r>'
+    ! density and expectation values
+    print '(a5,a12,a10)', 'n', '|R(r)|^2', '<r>'
     do i = 1, num_funs
         f_square = integrate_contracted_gto(L, num_prim, alpha, coeffs(:,i), 0)
         expect_r = integrate_contracted_gto(L, num_prim, alpha, coeffs(:,i), 1)
