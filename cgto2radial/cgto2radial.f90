@@ -83,7 +83,7 @@ program cgto2radial
     call calculate_radial(L, num_prim, num_funs, alpha, coeffs, 0.0d0, 5.0d0, 0.001d0)
     
     ! density and expectation values
-    print '(a5,a12,a10)', 'n', '|R(r)|^2', '<r>'
+    print '(a5,a12,a10)', 'n', '|rR(r)|^2', '<r>'
     do i = 1, num_funs
         f_square = integrate_contracted_gto(L, num_prim, alpha, coeffs(:,i), 0)
         expect_r = integrate_contracted_gto(L, num_prim, alpha, coeffs(:,i), 1)
